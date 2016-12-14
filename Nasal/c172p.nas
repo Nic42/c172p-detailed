@@ -577,6 +577,32 @@ setlistener("/sim/signals/fdm-initialized", func {
     aircraft.data.add("/sim/model/c172p/immat-on-panel");
     aircraft.data.load();
 
+####################
+	#setprop("/controls/engines/active-engine", getprop("/sim/state/overlay/controls/engines/active-engine"));
+	setprop("/controls/engines/active-engine", 0);
+	setprop("/fdm/jsbsim/running", getprop("/sim/state/overlay/fdm/jsbsim/running"));
+	setprop("/consumables/fuel/tank/selected", getprop("/sim/state/overlay/consumables/fuel/tank/selected"));
+	setprop("/controls/flight/flaps", getprop("/sim/state/overlay/controls/flight/flaps"));
+	setprop("/controls/switches/magnetos", getprop("/sim/state/overlay/controls/switches/magnetos"));
+	setprop("/controls/switches/master-bat", getprop("/sim/state/overlay/controls/switches/master-bat"));
+	setprop("/controls/switches/master-alt", getprop("/sim/state/overlay/controls/switches/master-alt"));
+	setprop("/controls/switches/master-avionics", getprop("/sim/state/overlay/controls/switches/master-avionics"));
+	setprop("/controls/switches/starter", getprop("/sim/state/overlay/controls/switches/starter"));
+	setprop("/controls/engines/engine/primer", getprop("/sim/state/overlay/controls/engines/engine/primer"));
+	setprop("/controls/engines/engine/primer-lever", getprop("/sim/state/overlay/controls/engines/engine/primer-lever"));
+	setprop("/controls/engines/current-engine/throttle", getprop("/sim/state/overlay/controls/engines/current-engine/throttle"));
+	setprop("/controls/engines/current-engine/mixture", getprop("/sim/state/overlay/controls/engines/current-engine/mixture"));
+	setprop("/controls/engines/active-engine/oil-level", getprop("/sim/state/overlay/controls/engines/active-engine/oil-level"));
+	setprop("/controls/engines/active-engine/carb_ice", getprop("/sim/state/overlay/controls/engines/active-engine/carb_ice"));
+	setprop("/engines/active-engine/auto-start", getprop("/sim/state/overlay/engines/active-engine/auto-start"));
+	setprop("/engines/active-engine/running", getprop("/sim/state/overlay/engines/active-engine/running"));
+	setprop("/engines/active-engine/cranking", getprop("/sim/state/overlay/engines/active-engine/cranking"));
+	#setprop("/sim/presets/airspeed-kt", getprop("/sim/state/overlay/sim/presets/airspeed-kt"));
+	#setprop("/sim/presets/mach", getprop("/sim/state/overlay/sim/presets/mach"));
+	#setprop("/sim/presets/uBody-fps", getprop("/sim/state/overlay/sim/presets/uBody-fps"));
+	#setprop("/sim/presets/wBody-fps", getprop("/sim/state/overlay/sim/presets/wBody-fps));
+####################
+
     # Initialize mass limits
     set_limits(props.globals.getNode("/controls/engines/active-engine"));
 
@@ -622,7 +648,7 @@ setlistener("/sim/signals/fdm-initialized", func {
     fuel_save_state();
     
     # Checking if switches should be moved back to default position (in case save state is off)
-    switches_save_state();
+    #switches_save_state();
     
     # Checking if fuel contamination is allowed, and if so generating a random situation
     fuel_contamination();
