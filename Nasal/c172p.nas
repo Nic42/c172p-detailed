@@ -582,6 +582,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	setprop("/controls/engines/active-engine", 0);
 	setprop("/fdm/jsbsim/running", getprop("/sim/state/overlay/fdm/jsbsim/running"));
 	setprop("/consumables/fuel/tank/selected", getprop("/sim/state/overlay/consumables/fuel/tank/selected"));
+	setprop("/controls/gear/brake-parking", getprop("/sim/state/overlay/controls/gear/brake-parking"));
 	setprop("/controls/flight/flaps", getprop("/sim/state/overlay/controls/flight/flaps"));
 	setprop("/controls/switches/magnetos", getprop("/sim/state/overlay/controls/switches/magnetos"));
 	setprop("/controls/switches/master-bat", getprop("/sim/state/overlay/controls/switches/master-bat"));
@@ -597,6 +598,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 	setprop("/engines/active-engine/auto-start", getprop("/sim/state/overlay/engines/active-engine/auto-start"));
 	setprop("/engines/active-engine/running", getprop("/sim/state/overlay/engines/active-engine/running"));
 	setprop("/engines/active-engine/cranking", getprop("/sim/state/overlay/engines/active-engine/cranking"));
+	setprop("/sim/model/c172p/securing/brake-parking", getprop("/sim/state/overlay/sim/model/c172p/securing/brake-parking"));
 	#setprop("/sim/presets/airspeed-kt", getprop("/sim/state/overlay/sim/presets/airspeed-kt"));
 	#setprop("/sim/presets/mach", getprop("/sim/state/overlay/sim/presets/mach"));
 	#setprop("/sim/presets/uBody-fps", getprop("/sim/state/overlay/sim/presets/uBody-fps"));

@@ -5,15 +5,22 @@
     <name type="string" n="0">approach</name>
 
     <overlay>
-	<!--sim>
-		<presets>
+	<sim>
+		<!--presets>
 			<airspeed-kt type="double">100</airspeed-kt>
 			<mach type="double">0.12</mach>	
 			<uBody-fps type="double">200</uBody-fps>
 			<wBody-fps type="double">-.2</wBody-fps>
 
-		</presets>
-	</sim-->
+		</presets-->
+		<model>
+			<c172p>
+				<securing>
+					<brake-parking type="bool">0</brake-parking>
+				</securing>
+			</c172p>
+		</model>
+	</sim>
 	<fdm>
 		<jsbsim>
 			<running type="bool">0</running>
@@ -40,6 +47,9 @@
 		<flight>
 			<flaps type="double">1</flaps>
 		</flight>
+		<gear>
+			<brake-parking type="bool">0</brake-parking>
+		</gear>
 		<switches>
 			<magnetos type="int">3</magnetos>
 			<master-bat type="bool">1</master-bat>
