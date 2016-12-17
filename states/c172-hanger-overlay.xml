@@ -2,18 +2,18 @@
 
 <PropertyList>
 
-    <name type="string" n="0">approach</name>
+    <name type="string" n="1">hanger</name>
 
     <overlay>
 	<sim>
 		<presets>
 			<speed-set type="string">knots</speed-set>
-			<airspeed-kt type="int">80</airspeed-kt>
-			<longitude-deg type="double">-96.796</longitude-deg>
-			<latitude-deg type="double">37.730</latitude-deg>
-			<onground type="bool">0</onground>
-			<altitude-ft  type="int">2000</altitude-ft>
-			<heading-deg type="double">339.829</heading-deg>
+			<airspeed-kt type="int">0</airspeed-kt>
+			<longitude-deg type="double">-96.81799</longitude-deg>
+			<latitude-deg type="double">37.77998</latitude-deg>
+			<onground type="bool">1</onground>
+			<altitude-ft type="int">-9999</altitude-ft>
+			<heading-deg type="double">223.7125</heading-deg>
 		</presets>
 		<model>
 			<c172p>
@@ -47,10 +47,10 @@
 	</engines>
 	<controls>
 		<flight>
-			<flaps type="double">1</flaps>
+			<flaps type="double">0</flaps>
 		</flight>
 		<gear>
-			<brake-parking type="bool">0</brake-parking>
+			<brake-parking type="bool">1</brake-parking>
 		</gear>
 		<switches>
 			<magnetos type="int">3</magnetos>
@@ -65,7 +65,7 @@
 			<primer-lever type="bool">0</primer-lever>
 		    </engine>
 		    <current-engine>
-			<throttle type="double">0.498</throttle>
+			<throttle type="double">0.2</throttle>
 			<mixture type="double">0.95</mixture>
 		    </current-engine>
 		    <active-engine>

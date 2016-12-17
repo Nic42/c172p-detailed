@@ -578,6 +578,7 @@ setlistener("/sim/signals/fdm-initialized", func {
     aircraft.data.load();
 
 ####################
+if (getprop("/sim/aircraft-state") == "approach" or getprop("/sim/aircraft-state") == "hanger") {
 	#setprop("/controls/engines/active-engine", getprop("/sim/state/overlay/controls/engines/active-engine"));
 	setprop("/controls/engines/active-engine", 0);
 	setprop("/fdm/jsbsim/running", getprop("/sim/state/overlay/fdm/jsbsim/running"));
@@ -599,10 +600,14 @@ setlistener("/sim/signals/fdm-initialized", func {
 	setprop("/engines/active-engine/running", getprop("/sim/state/overlay/engines/active-engine/running"));
 	setprop("/engines/active-engine/cranking", getprop("/sim/state/overlay/engines/active-engine/cranking"));
 	setprop("/sim/model/c172p/securing/brake-parking", getprop("/sim/state/overlay/sim/model/c172p/securing/brake-parking"));
-	#setprop("/sim/presets/airspeed-kt", getprop("/sim/state/overlay/sim/presets/airspeed-kt"));
-	#setprop("/sim/presets/mach", getprop("/sim/state/overlay/sim/presets/mach"));
-	#setprop("/sim/presets/uBody-fps", getprop("/sim/state/overlay/sim/presets/uBody-fps"));
-	#setprop("/sim/presets/wBody-fps", getprop("/sim/state/overlay/sim/presets/wBody-fps));
+	setprop("/sim/presets/airspeed-kt", getprop("/sim/state/overlay/sim/presets/airspeed-kt"));
+	setprop("/sim/presets/speed-set", getprop("/sim/state/overlay/sim/presets/speed-set"));
+	setprop("/sim/presets/longitude-deg", getprop("/sim/state/overlay/sim/presets/longitude-deg"));
+	setprop("/sim/presets/latitude-deg", getprop("/sim/state/overlay/sim/presets/latitude-deg"));
+	setprop("/sim/presets/onground", getprop("/sim/state/overlay/sim/presets/onground"));
+	setprop("/sim/presetsaltitude-ft", getprop("/sim/state/overlay/sim/presets/altitude-ft"));
+	setprop("/sim/presets/heading-deg", getprop("/sim/state/overlay/sim/presets/heading-deg"));
+}
 ####################
 
     # Initialize mass limits
@@ -650,7 +655,8 @@ setlistener("/sim/signals/fdm-initialized", func {
     fuel_save_state();
     
     # Checking if switches should be moved back to default position (in case save state is off)
-    #switches_save_state();
+    if (getprop("/sim/aircraft-state") != "approach" and getprop("/sim/aircraft-state") != "hanger")
+    switches_save_state();
     
     # Checking if fuel contamination is allowed, and if so generating a random situation
     fuel_contamination();
