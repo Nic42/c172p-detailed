@@ -578,12 +578,14 @@ setlistener("/sim/signals/fdm-initialized", func {
     aircraft.data.load();
 
 ####################
-if (getprop("/sim/aircraft-state") == "approach" or getprop("/sim/aircraft-state") == "hanger") {
-	#setprop("/controls/engines/active-engine", getprop("/sim/state/overlay/controls/engines/active-engine"));
+
+if (getprop("/sim/aircraft-state") == "approach") {
+#	setprop("/controls/engines/active-engine", getprop("/sim/state/overlay/controls/engines/active-engine"));
 	setprop("/controls/engines/active-engine", 0);
 	setprop("/fdm/jsbsim/running", getprop("/sim/state/overlay/fdm/jsbsim/running"));
+	setprop("/fdm/jsbsim/bushkit", getprop("/sim/state/overlay/fdm/jsbsim/bushkit"));
 	setprop("/consumables/fuel/tank/selected", getprop("/sim/state/overlay/consumables/fuel/tank/selected"));
-	setprop("/controls/gear/brake-parking", getprop("/sim/state/overlay/controls/gear/brake-parking"));
+	setprop("/controls/gear/gear-down", getprop("/sim/state/overlay/controls/gear/gear-down"));
 	setprop("/controls/flight/flaps", getprop("/sim/state/overlay/controls/flight/flaps"));
 	setprop("/controls/switches/magnetos", getprop("/sim/state/overlay/controls/switches/magnetos"));
 	setprop("/controls/switches/master-bat", getprop("/sim/state/overlay/controls/switches/master-bat"));
@@ -599,14 +601,138 @@ if (getprop("/sim/aircraft-state") == "approach" or getprop("/sim/aircraft-state
 	setprop("/engines/active-engine/auto-start", getprop("/sim/state/overlay/engines/active-engine/auto-start"));
 	setprop("/engines/active-engine/running", getprop("/sim/state/overlay/engines/active-engine/running"));
 	setprop("/engines/active-engine/cranking", getprop("/sim/state/overlay/engines/active-engine/cranking"));
-	setprop("/sim/model/c172p/securing/brake-parking", getprop("/sim/state/overlay/sim/model/c172p/securing/brake-parking"));
+	setprop("/sim/model/c172p/brake-parking", getprop("/sim/state/overlay/sim/model/c172p/brake-parking"));
+	setprop("/sim/freeze/master", getprop("/sim/state/overlay/sim/freeze/master"));
+	setprop("/sim/freeze/clock", getprop("/sim/state/overlay/sim/freeze/clock"));
 	setprop("/sim/presets/airspeed-kt", getprop("/sim/state/overlay/sim/presets/airspeed-kt"));
 	setprop("/sim/presets/speed-set", getprop("/sim/state/overlay/sim/presets/speed-set"));
-	setprop("/sim/presets/longitude-deg", getprop("/sim/state/overlay/sim/presets/longitude-deg"));
-	setprop("/sim/presets/latitude-deg", getprop("/sim/state/overlay/sim/presets/latitude-deg"));
-	setprop("/sim/presets/onground", getprop("/sim/state/overlay/sim/presets/onground"));
-	setprop("/sim/presetsaltitude-ft", getprop("/sim/state/overlay/sim/presets/altitude-ft"));
-	setprop("/sim/presets/heading-deg", getprop("/sim/state/overlay/sim/presets/heading-deg"));
+}
+if (getprop("/sim/aircraft-state") == "parking") {
+#	setprop("/controls/engines/active-engine", getprop("/sim/state[1]/overlay/controls/engines/active-engine"));
+	setprop("/controls/engines/active-engine", 0);
+	setprop("/fdm/jsbsim/running", getprop("/sim/state[1]/overlay/fdm/jsbsim/running"));
+	setprop("/fdm/jsbsim/bushkit", getprop("/sim/state[1]/overlay/fdm/jsbsim/bushkit"));
+	setprop("/consumables/fuel/tank/selected", getprop("/sim/state[1]/overlay/consumables/fuel/tank/selected"));
+	setprop("/controls/gear/gear-down", getprop("/sim/state[1]/overlay/controls/gear/gear-down"));
+	setprop("/controls/flight/flaps", getprop("/sim/state[1]/overlay/controls/flight/flaps"));
+	setprop("/controls/switches/magnetos", getprop("/sim/state[1]/overlay/controls/switches/magnetos"));
+	setprop("/controls/switches/master-bat", getprop("/sim/state[1]/overlay/controls/switches/master-bat"));
+	setprop("/controls/switches/master-alt", getprop("/sim/state[1]/overlay/controls/switches/master-alt"));
+	setprop("/controls/switches/master-avionics", getprop("/sim/state[1]/overlay/controls/switches/master-avionics"));
+	setprop("/controls/switches/starter", getprop("/sim/state[1]/overlay/controls/switches/starter"));
+	setprop("/controls/engines/engine/primer", getprop("/sim/state[1]/overlay/controls/engines/engine/primer"));
+	setprop("/controls/engines/engine/primer-lever", getprop("/sim/state[1]/overlay/controls/engines/engine/primer-lever"));
+	setprop("/controls/engines/current-engine/throttle", getprop("/sim/state[1]/overlay/controls/engines/current-engine/throttle"));
+	setprop("/controls/engines/current-engine/mixture", getprop("/sim/state[1]/overlay/controls/engines/current-engine/mixture"));
+	setprop("/controls/engines/active-engine/oil-level", getprop("/sim/state[1]/overlay/controls/engines/active-engine/oil-level"));
+	setprop("/controls/engines/active-engine/carb_ice", getprop("/sim/state[1]/overlay/controls/engines/active-engine/carb_ice"));
+	setprop("/engines/active-engine/auto-start", getprop("/sim/state[1]/overlay/engines/active-engine/auto-start"));
+	setprop("/engines/active-engine/running", getprop("/sim/state[1]/overlay/engines/active-engine/running"));
+	setprop("/engines/active-engine/cranking", getprop("/sim/state[1]/overlay/engines/active-engine/cranking"));
+	setprop("/sim/model/c172p/brake-parking", getprop("/sim/state[1]/overlay/sim/model/c172p/brake-parking"));
+	setprop("/sim/freeze/master", getprop("/sim/state[1]/overlay/sim/freeze/master"));
+	setprop("/sim/freeze/clock", getprop("/sim/state[1]/overlay/sim/freeze/clock"));
+	setprop("/sim/presets/airspeed-kt", getprop("/sim/state[1]/overlay/sim/presets/airspeed-kt"));
+	setprop("/sim/presets/speed-set", getprop("/sim/state[1]/overlay/sim/presets/speed-set"));
+}
+if (getprop("/sim/aircraft-state") == "hanger") {
+#	setprop("/controls/engines/active-engine", getprop("/sim/state[2]/overlay/controls/engines/active-engine"));
+	setprop("/controls/engines/active-engine", 0);
+	setprop("/fdm/jsbsim/running", getprop("/sim/state[2]/overlay/fdm/jsbsim/running"));
+	setprop("/fdm/jsbsim/bushkit", getprop("/sim/state[2]/overlay/fdm/jsbsim/bushkit"));
+	setprop("/consumables/fuel/tank/selected", getprop("/sim/state[2]/overlay/consumables/fuel/tank/selected"));
+	setprop("/controls/gear/gear-down", getprop("/sim/state[2]/overlay/controls/gear/gear-down"));
+	setprop("/controls/flight/flaps", getprop("/sim/state[2]/overlay/controls/flight/flaps"));
+	setprop("/controls/switches/magnetos", getprop("/sim/state[2]/overlay/controls/switches/magnetos"));
+	setprop("/controls/switches/master-bat", getprop("/sim/state[2]/overlay/controls/switches/master-bat"));
+	setprop("/controls/switches/master-alt", getprop("/sim/state[2]/overlay/controls/switches/master-alt"));
+	setprop("/controls/switches/master-avionics", getprop("/sim/state[2]/overlay/controls/switches/master-avionics"));
+	setprop("/controls/switches/starter", getprop("/sim/state[2]/overlay/controls/switches/starter"));
+	setprop("/controls/engines/engine/primer", getprop("/sim/state[2]/overlay/controls/engines/engine/primer"));
+	setprop("/controls/engines/engine/primer-lever", getprop("/sim/state[2]/overlay/controls/engines/engine/primer-lever"));
+	setprop("/controls/engines/current-engine/throttle", getprop("/sim/state[2]/overlay/controls/engines/current-engine/throttle"));
+	setprop("/controls/engines/current-engine/mixture", getprop("/sim/state[2]/overlay/controls/engines/current-engine/mixture"));
+	setprop("/controls/engines/active-engine/oil-level", getprop("/sim/state[2]/overlay/controls/engines/active-engine/oil-level"));
+	setprop("/controls/engines/active-engine/carb_ice", getprop("/sim/state[2]/overlay/controls/engines/active-engine/carb_ice"));
+	setprop("/engines/active-engine/auto-start", getprop("/sim/state[2]/overlay/engines/active-engine/auto-start"));
+	setprop("/engines/active-engine/running", getprop("/sim/state[2]/overlay/engines/active-engine/running"));
+	setprop("/engines/active-engine/cranking", getprop("/sim/state[2]/overlay/engines/active-engine/cranking"));
+	setprop("/sim/model/c172p/brake-parking", getprop("/sim/state[2]/overlay/sim/model/c172p/brake-parking"));
+	setprop("/sim/freeze/master", getprop("/sim/state[2]/overlay/sim/freeze/master"));
+	setprop("/sim/freeze/clock", getprop("/sim/state[2]/overlay/sim/freeze/clock"));
+	setprop("/sim/presets/airspeed-kt", getprop("/sim/state[2]/overlay/sim/presets/airspeed-kt"));
+	setprop("/sim/presets/speed-set", getprop("/sim/state[2]/overlay/sim/presets/speed-set"));
+	setprop("/sim/presets/longitude-deg", getprop("/sim/state[2]/overlay/sim/presets/longitude-deg"));
+	setprop("/sim/presets/latitude-deg", getprop("/sim/state[2]/overlay/sim/presets/latitude-deg"));
+	setprop("/sim/presets/onground", getprop("/sim/state[2]/overlay/sim/presets/onground"));
+	setprop("/sim/presets/altitude-ft", getprop("/sim/state[2]/overlay/sim/presets/altitude-ft"));
+	setprop("/sim/presets/heading-deg", getprop("/sim/state[2]/overlay/sim/presets/heading-deg"));
+}
+if (getprop("/sim/aircraft-state") == "water") {
+#	setprop("/controls/engines/active-engine", getprop("/sim/state[3]/overlay/controls/engines/active-engine"));
+	setprop("/controls/engines/active-engine", 0);
+	setprop("/fdm/jsbsim/running", getprop("/sim/state[3]/overlay/fdm/jsbsim/running"));
+	setprop("/fdm/jsbsim/bushkit", getprop("/sim/state[3]/overlay/fdm/jsbsim/bushkit"));
+	setprop("/consumables/fuel/tank/selected", getprop("/sim/state[3]/overlay/consumables/fuel/tank/selected"));
+	setprop("/controls/gear/gear-down", getprop("/sim/state[3]/overlay/controls/gear/gear-down"));
+	setprop("/controls/flight/flaps", getprop("/sim/state[3]/overlay/controls/flight/flaps"));
+	setprop("/controls/switches/magnetos", getprop("/sim/state[3]/overlay/controls/switches/magnetos"));
+	setprop("/controls/switches/master-bat", getprop("/sim/state[3]/overlay/controls/switches/master-bat"));
+	setprop("/controls/switches/master-alt", getprop("/sim/state[3]/overlay/controls/switches/master-alt"));
+	setprop("/controls/switches/master-avionics", getprop("/sim/state[3]/overlay/controls/switches/master-avionics"));
+	setprop("/controls/switches/starter", getprop("/sim/state[3]/overlay/controls/switches/starter"));
+	setprop("/controls/engines/engine/primer", getprop("/sim/state[3]/overlay/controls/engines/engine/primer"));
+	setprop("/controls/engines/engine/primer-lever", getprop("/sim/state[3]/overlay/controls/engines/engine/primer-lever"));
+	setprop("/controls/engines/current-engine/throttle", getprop("/sim/state[3]/overlay/controls/engines/current-engine/throttle"));
+	setprop("/controls/engines/current-engine/mixture", getprop("/sim/state[3]/overlay/controls/engines/current-engine/mixture"));
+	setprop("/controls/engines/active-engine/oil-level", getprop("/sim/state[3]/overlay/controls/engines/active-engine/oil-level"));
+	setprop("/controls/engines/active-engine/carb_ice", getprop("/sim/state[3]/overlay/controls/engines/active-engine/carb_ice"));
+	setprop("/engines/active-engine/auto-start", getprop("/sim/state[3]/overlay/engines/active-engine/auto-start"));
+	setprop("/engines/active-engine/running", getprop("/sim/state[3]/overlay/engines/active-engine/running"));
+	setprop("/engines/active-engine/cranking", getprop("/sim/state[3]/overlay/engines/active-engine/cranking"));
+	setprop("/sim/model/c172p/brake-parking", getprop("/sim/state[3]/overlay/sim/model/c172p/brake-parking"));
+	setprop("/sim/freeze/master", getprop("/sim/state[3]/overlay/sim/freeze/master"));
+	setprop("/sim/freeze/clock", getprop("/sim/state[3]/overlay/sim/freeze/clock"));
+	setprop("/sim/presets/airspeed-kt", getprop("/sim/state[3]/overlay/sim/presets/airspeed-kt"));
+	setprop("/sim/presets/speed-set", getprop("/sim/state[3]/overlay/sim/presets/speed-set"));
+	setprop("/sim/presets/longitude-deg", getprop("/sim/state[3]/overlay/sim/presets/longitude-deg"));
+	setprop("/sim/presets/latitude-deg", getprop("/sim/state[3]/overlay/sim/presets/latitude-deg"));
+	setprop("/sim/presets/onground", getprop("/sim/state[3]/overlay/sim/presets/onground"));
+	setprop("/sim/presets/altitude-ft", getprop("/sim/state[3]/overlay/sim/presets/altitude-ft"));
+	setprop("/sim/presets/heading-deg", getprop("/sim/state[3]/overlay/sim/presets/heading-deg"));
+}
+if (getprop("/sim/aircraft-state") == "cruise") {
+#	setprop("/controls/engines/active-engine", getprop("/sim/state[4]/overlay/controls/engines/active-engine"));
+	setprop("/controls/engines/active-engine", 0);
+	setprop("/fdm/jsbsim/running", getprop("/sim/state[4]/overlay/fdm/jsbsim/running"));
+	setprop("/fdm/jsbsim/bushkit", getprop("/sim/state[4]/overlay/fdm/jsbsim/bushkit"));
+	setprop("/consumables/fuel/tank/selected", getprop("/sim/state[4]/overlay/consumables/fuel/tank/selected"));
+	setprop("/controls/gear/gear-down", getprop("/sim/state[4]/overlay/controls/gear/gear-down"));
+	setprop("/controls/flight/flaps", getprop("/sim/state[4]/overlay/controls/flight/flaps"));
+	setprop("/controls/switches/magnetos", getprop("/sim/state[4]/overlay/controls/switches/magnetos"));
+	setprop("/controls/switches/master-bat", getprop("/sim/state[4]/overlay/controls/switches/master-bat"));
+	setprop("/controls/switches/master-alt", getprop("/sim/state[4]/overlay/controls/switches/master-alt"));
+	setprop("/controls/switches/master-avionics", getprop("/sim/state[4]/overlay/controls/switches/master-avionics"));
+	setprop("/controls/switches/starter", getprop("/sim/state[4]/overlay/controls/switches/starter"));
+	setprop("/controls/engines/engine/primer", getprop("/sim/state[4]/overlay/controls/engines/engine/primer"));
+	setprop("/controls/engines/engine/primer-lever", getprop("/sim/state[4]/overlay/controls/engines/engine/primer-lever"));
+	setprop("/controls/engines/current-engine/throttle", getprop("/sim/state[4]/overlay/controls/engines/current-engine/throttle"));
+	setprop("/controls/engines/current-engine/mixture", getprop("/sim/state[4]/overlay/controls/engines/current-engine/mixture"));
+	setprop("/controls/engines/active-engine/oil-level", getprop("/sim/state[4]/overlay/controls/engines/active-engine/oil-level"));
+	setprop("/controls/engines/active-engine/carb_ice", getprop("/sim/state[4]/overlay/controls/engines/active-engine/carb_ice"));
+	setprop("/engines/active-engine/auto-start", getprop("/sim/state[4]/overlay/engines/active-engine/auto-start"));
+	setprop("/engines/active-engine/running", getprop("/sim/state[4]/overlay/engines/active-engine/running"));
+	setprop("/engines/active-engine/cranking", getprop("/sim/state[4]/overlay/engines/active-engine/cranking"));
+	setprop("/sim/model/c172p/brake-parking", getprop("/sim/state[4]/overlay/sim/model/c172p/brake-parking"));
+	setprop("/sim/freeze/master", getprop("/sim/state[4]/overlay/sim/freeze/master"));
+	setprop("/sim/freeze/clock", getprop("/sim/state[4]/overlay/sim/freeze/clock"));
+	setprop("/sim/presets/airspeed-kt", getprop("/sim/state[4]/overlay/sim/presets/airspeed-kt"));
+	setprop("/sim/presets/speed-set", getprop("/sim/state[4]/overlay/sim/presets/speed-set"));
+	setprop("/sim/presets/longitude-deg", getprop("/sim/state[4]/overlay/sim/presets/longitude-deg"));
+	setprop("/sim/presets/latitude-deg", getprop("/sim/state[4]/overlay/sim/presets/latitude-deg"));
+	setprop("/sim/presets/onground", getprop("/sim/state[4]/overlay/sim/presets/onground"));
+	setprop("/sim/presets/altitude-ft", getprop("/sim/state[4]/overlay/sim/presets/altitude-ft"));
+	setprop("/sim/presets/heading-deg", getprop("/sim/state[4]/overlay/sim/presets/heading-deg"));
 }
 ####################
 
@@ -655,7 +781,11 @@ if (getprop("/sim/aircraft-state") == "approach" or getprop("/sim/aircraft-state
     fuel_save_state();
     
     # Checking if switches should be moved back to default position (in case save state is off)
-    if (getprop("/sim/aircraft-state") != "approach" and getprop("/sim/aircraft-state") != "hanger")
+    if (getprop("/sim/aircraft-state") != "approach" and 
+	getprop("/sim/aircraft-state") != "parking" and 
+	getprop("/sim/aircraft-state") != "hanger" and 
+	getprop("/sim/aircraft-state") != "water" and
+	getprop("/sim/aircraft-state") != "cruise")
     switches_save_state();
     
     # Checking if fuel contamination is allowed, and if so generating a random situation

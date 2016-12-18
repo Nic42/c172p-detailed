@@ -2,29 +2,32 @@
 
 <PropertyList>
 
-    <name type="string" n="1">hanger</name>
+    <name type="string" n="2">hanger</name>
 
     <overlay>
 	<sim>
+		<freeze>
+			<master type="bool">0</master>
+			<clock type="bool">0</clock>
+		</freeze>
 		<presets>
 			<speed-set type="string">knots</speed-set>
 			<airspeed-kt type="int">0</airspeed-kt>
 			<longitude-deg type="double">-96.81799</longitude-deg>
 			<latitude-deg type="double">37.77998</latitude-deg>
-			<onground type="bool">1</onground>
-			<altitude-ft type="int">-9999</altitude-ft>
-			<heading-deg type="double">223.7125</heading-deg>
+			<onground type="bool">true</onground>
+			<altitude-ft type="int">0</altitude-ft>
+			<heading-deg type="double">200</heading-deg>
 		</presets>
 		<model>
 			<c172p>
-				<securing>
-					<brake-parking type="bool">0</brake-parking>
-				</securing>
+				<brake-parking type="bool">true</brake-parking>
 			</c172p>
 		</model>
 	</sim>
 	<fdm>
 		<jsbsim>
+			<bushkit type="int">0</bushkit>
 			<running type="bool">0</running>
 		</jsbsim>
 	</fdm>
@@ -50,7 +53,7 @@
 			<flaps type="double">0</flaps>
 		</flight>
 		<gear>
-			<brake-parking type="bool">1</brake-parking>
+			<gear-down type="bool">0</gear-down>
 		</gear>
 		<switches>
 			<magnetos type="int">3</magnetos>

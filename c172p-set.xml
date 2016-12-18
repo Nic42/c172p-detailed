@@ -453,7 +453,10 @@ http://forum.flightgear.org/viewtopic.php?f=4&t=25157
         </mouse>
                 
         <state include="states/c172-approach-overlay.xml" n="0"/>
-        <state include="states/c172-hanger-overlay.xml" n="1"/>
+        <state include="states/c172-parking-overlay.xml" n="1"/>
+	<state include="states/c172-hanger-overlay.xml" n="2"/>
+        <state include="states/c172-water-overlay.xml" n="3"/>
+	<state include="states/c172-cruise-overlay.xml" n="4"/>
         
     </sim>
 

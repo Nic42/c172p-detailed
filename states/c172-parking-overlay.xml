@@ -2,7 +2,7 @@
 
 <PropertyList>
 
-    <name type="string" n="0">approach</name>
+    <name type="string" n="1">parking</name>
 
     <overlay>
 	<sim>
@@ -12,11 +12,11 @@
 		</freeze>
 		<presets>
 			<speed-set type="string">knots</speed-set>
-			<airspeed-kt type="int">100</airspeed-kt>
+			<airspeed-kt type="int">0</airspeed-kt>
 		</presets>
 		<model>
 			<c172p>
-				<brake-parking type="bool">false</brake-parking>
+				<brake-parking type="bool">true</brake-parking>
 			</c172p>
 		</model>
 	</sim>
@@ -45,10 +45,10 @@
 	</engines>
 	<controls>
 		<flight>
-			<flaps type="double">1</flaps>
+			<flaps type="double">0</flaps>
 		</flight>
 		<gear>
-			<gear-down type="bool">false</gear-down>
+			<gear-down type="bool">0</gear-down>
 		</gear>
 		<switches>
 			<magnetos type="int">3</magnetos>
@@ -63,7 +63,7 @@
 			<primer-lever type="bool">0</primer-lever>
 		    </engine>
 		    <current-engine>
-			<throttle type="double">0.498</throttle>
+			<throttle type="double">0.2</throttle>
 			<mixture type="double">0.95</mixture>
 		    </current-engine>
 		    <active-engine>
